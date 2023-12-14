@@ -1465,10 +1465,11 @@ class bitfinex2(Exchange, ImplicitAPI):
         # note: same order types exist for margin orders without the EXCHANGE prefix
         orderTypes = self.safe_value(self.options, 'orderTypes', {})
         orderType = type.upper()
-        if market['spot']:
-            # although they claim that type needs to be 'exchange limit' or 'exchange market'
-            # in fact that's not the case for swap markets
-            orderType = self.safe_string_upper(orderTypes, type, type)
+# TODO trading-bot
+        # if market['spot']:
+        #     # although they claim that type needs to be 'exchange limit' or 'exchange market'
+        #     # in fact that's not the case for swap markets
+        #     orderType = self.safe_string_upper(orderTypes, type, type)
         stopPrice = self.safe_string_2(params, 'stopPrice', 'triggerPrice')
         timeInForce = self.safe_string(params, 'timeInForce')
         postOnlyParam = self.safe_value(params, 'postOnly', False)
